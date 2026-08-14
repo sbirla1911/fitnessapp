@@ -1,0 +1,23 @@
+# Render Blueprint — deploy PlateAndPlan as a web service.
+# In Render: New → Blueprint → point at this repo. Then fill in the env vars
+# marked sync:false (they won't be committed to git).
+services:
+  - type: web
+    name: plateandplan
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: RATE_LIMIT_SALT
+        generateValue: true # Render generates a random value
+      - key: RATE_LIMIT_PER_IP_PER_DAY
+        value: "5"
+      - key: RATE_LIMIT_GLOBAL_PER_DAY
+        value: "200"
