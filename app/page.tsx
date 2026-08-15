@@ -40,15 +40,26 @@ export default function LandingPage() {
 
   return (
     <div className="space-y-8">
-      <section className="space-y-3 text-center">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Your personalized workout &amp; meal plan
-        </h1>
-        <p className="mx-auto max-w-xl text-neutral-500">
-          Tell us about your body and food preferences. We&apos;ll calculate your
-          macro targets and build a full 7-day workout routine, meal plan, and
-          grocery list — free, no sign-up.
-        </p>
+      <section className="space-y-4">
+        <div className="overflow-hidden rounded-2xl border border-neutral-200 shadow-sm dark:border-neutral-800">
+          {/* Hero image lives at public/hero.jpg */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/hero.jpg"
+            alt="Sunrise over a running track beside a fresh, balanced meal bowl — move, nourish, thrive"
+            className="h-auto w-full"
+          />
+        </div>
+        <div className="space-y-2 text-center">
+          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            Your personalized workout &amp; meal plan
+          </h1>
+          <p className="mx-auto max-w-xl text-neutral-500">
+            Tell us about your body and food preferences. We&apos;ll calculate your
+            macro targets and build a full 7-day workout routine, meal plan, and
+            grocery list — free, no sign-up.
+          </p>
+        </div>
       </section>
 
       {error && (
