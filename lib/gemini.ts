@@ -1,7 +1,9 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { WeekPlanSchema, type Profile, type Targets, type WeekPlan } from "./schema";
 
-const MODEL = "gemini-2.5-flash";
+// flash-lite-latest: current lightweight model — faster and with a higher free-tier
+// daily quota than gemini-2.5-flash (which caps at 20 requests/day on the free tier).
+const MODEL = "gemini-flash-lite-latest";
 
 export class GeminiError extends Error {}
 
@@ -104,7 +106,8 @@ const responseSchema = {
 const SYSTEM_INSTRUCTION = `You are a certified strength coach and nutritionist creating a personalized one-week plan.
 Rules:
 - Output MUST be a full 7-day plan, day 0 through day 6.
-- Each day's meals should sum close to the user's daily macro targets (within ~10% on calories and protein).
+- Each day's meals should sum close to the user's daily macro targets (within ~10% on calories AND protein).
+- PROTEIN IS THE PRIORITY: always reach at least the daily protein target (adjust carbs/fat to make room). Every meal should include a substantial protein source.
 - Provide realistic macros per meal (kcal, protein, carbs, fat, fibre in grams).
 - Respect the user's dietary pattern, allergies, disliked foods, and preferred cuisines strictly.
 - Rotate a small set (3-4) of meals per slot across the week so the grocery list stays practical.

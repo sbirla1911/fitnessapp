@@ -10,7 +10,7 @@ list**, engineered to hit their calculated macro targets. Every plan gets its ow
 - **Next.js 16** (App Router) + TypeScript, deployed on **Vercel**
 - **Supabase Postgres** — stores generated plans (by slug) + a rate-limit log; accessed
   server-side with the service-role key (no user auth)
-- **Gemini** (`gemini-2.5-flash`) via `@google/genai`, server-side only
+- **Gemini** (`gemini-flash-lite-latest`) via `@google/genai`, server-side only
 - **Zod** validation on the generated plan
 
 ## How it works

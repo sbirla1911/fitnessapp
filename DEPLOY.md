@@ -86,11 +86,12 @@ The repo includes a [`render.yaml`](render.yaml) blueprint, so setup is one clic
 
 ## Why Render, not Vercel
 
-A full 7-day generation takes **~60–100s** on Gemini's free tier. Vercel's free (Hobby) tier
-**hard-caps every request at 60s**, so generations get killed. Render web services are normal
-long-running Node servers with no such short cap, so the request completes. Trade-off: on the
-**free** Render tier the service **sleeps after ~15 min idle**, so the first visit after a
-lull has a ~30-50s cold start before the (already slow) generation. Upgrading to Render's
+With the `gemini-flash-lite-latest` model a full 7-day generation takes **~10s**. (It was
+60–100s on the heavier `gemini-2.5-flash`, which would exceed Vercel's free 60s function cap —
+part of why Render was chosen.) Render web services are normal long-running Node servers with
+no short request cap, so there's headroom regardless. Trade-off: on the **free** Render tier
+the service **sleeps after ~15 min idle**, so the first visit after a lull has a ~30-50s cold
+start before the generation. Upgrading to Render's
 paid tier removes the sleep; or move to Gemini paid billing to make generation itself faster.
 
 ## Costs & limits
